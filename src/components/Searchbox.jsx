@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { API_BASE_URL } from '../constants';
 
-export default function Searchbox() {
-    const [messages, setMessages] = useState([]);
-    const [inputMessage, setInputMessage] = useState('');
+export default function Searchbox({ inputMessage, setInputMessage, messages, setMessages }) {
     const [apiError, setApiError] = useState('');
 
     const sendMessage = async () => {
@@ -42,11 +40,11 @@ export default function Searchbox() {
 
             if (response.ok) {
                 const botMessage = {
-                id: Date.now() + 1,
-                text: data.response,
-                sender: 'bot',
-                timestamp: new Date(),
-                model: data.model
+                    id: Date.now() + 1,
+                    text: data.response,
+                    sender: 'bot',
+                    timestamp: new Date(),
+                    model: data.model
                 };
                 setMessages(prev => [...prev, botMessage]);
             } else {
@@ -84,7 +82,7 @@ export default function Searchbox() {
     };
 
     return (
-        <div style={{ background: 'white', borderTop: '1px solid #e5e7eb', padding: '16px' }}>
+        <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: 'white', borderTop: '1px solid #e5e7eb', padding: '16px', zIndex: 1000 }}>
             <div style={{ maxWidth: '896px', margin: '0 auto' }}>
                 <div style={{ display: 'flex', gap: '16px' }}>
                     <textarea
