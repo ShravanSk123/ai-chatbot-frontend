@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { API_BASE_URL } from '../constants';
 
 export default function Searchbox({ inputMessage, setInputMessage, messages, setMessages }) {
-    const [apiError, setApiError] = useState('');
+    // const [apiError, setApiError] = useState('');
 
     const sendMessage = async () => {
         const userMessage = {
