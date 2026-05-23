@@ -10,7 +10,7 @@ export default function Chatbot() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Header />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingTop: '64px', paddingBottom: '96px' }}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
         <MessageDisplay messages={messages} />
       </div>
       <Searchbox
