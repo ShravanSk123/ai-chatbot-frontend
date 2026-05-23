@@ -22,7 +22,7 @@ export default function Header() {
           <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3.01 1 4.32L2 22l6.68-1c1.31.64 2.78 1 4.32 1 5.52 0 10-4.48 10-10S17.52 2 12 2z" fill="#1a1a1a" />
         </svg>
         <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
-          <span style={{ fontSize: 16, fontWeight: 600 }}>Chat</span>
+          <span style={{ fontSize: 16, fontWeight: 600 }}>Rapid Chatbot</span>
           <span style={{ fontSize: 11, color: '#999', marginTop: 2 }}>Groq powered</span>
         </div>
       </div>
