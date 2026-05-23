@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { API_BASE_URL } from '../constants';
 
 export default function Searchbox({ inputMessage, setInputMessage, messages, setMessages }) {
+    // eslint-disable-next-line
     const [apiError, setApiError] = useState('');
 
     const sendMessage = async () => {
@@ -64,7 +65,7 @@ export default function Searchbox({ inputMessage, setInputMessage, messages, set
 
             if (error.name === 'TypeError' && error.message.includes('fetch')) {
                 errorMsg = 'CORS error - API not accessible. Check API CORS settings.';
-            } 
+            }
             else if (error.message.includes('HTTP')) {
                 errorMsg = `Server error: ${error.message}`;
             }
