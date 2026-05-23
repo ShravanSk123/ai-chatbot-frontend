@@ -83,37 +83,68 @@ export default function Searchbox({ inputMessage, setInputMessage, messages, set
     };
 
     return (
-        <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: 'white', borderTop: '1px solid #e5e7eb', padding: '16px', zIndex: 1000 }}>
-            <div style={{ maxWidth: '896px', margin: '0 auto' }}>
-                <div style={{ display: 'flex', gap: '16px' }}>
+        <div style={{ 
+            position: 'fixed', 
+            bottom: 0, 
+            left: 0, 
+            right: 0, 
+            background: '#ffffff',
+            borderTop: '1px solid #f0f0f0', 
+            padding: '16px', 
+            zIndex: 1000 
+        }}>
+            <div style={{ maxWidth: '768px', margin: '0 auto' }}>
+                <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-end' }}>
                     <textarea
                         value={inputMessage}
                         onChange={(e) => setInputMessage(e.target.value)}
-                        placeholder="Type your message here..."
+                        placeholder="Send a message..."
                         rows="1"
                         style={{
                             flex: 1,
                             padding: '12px 16px',
-                            border: '1px solid #d1d5db',
-                            borderRadius: '8px',
+                            border: '1px solid #e5e5e5',
+                            borderRadius: '24px',
                             fontSize: '14px',
                             resize: 'none',
-                            outline: 'none'
+                            outline: 'none',
+                            fontFamily: 'inherit',
+                            backgroundColor: '#fafafa',
+                            color: '#1a1a1a',
+                            transition: 'border-color 0.2s',
+                            maxHeight: '120px'
                         }}
+                        onFocus={(e) => e.target.style.borderColor = '#d5d5d5'}
+                        onBlur={(e) => e.target.style.borderColor = '#e5e5e5'}
                     />
                     <button
                         onClick={sendMessage}
+                        disabled={!inputMessage.trim()}
                         style={{
-                            padding: '12px 24px',
-                            color: 'white',
-                            borderRadius: '8px',
+                            padding: '10px 20px',
+                            color: '#ffffff',
+                            borderRadius: '20px',
                             border: 'none',
                             display: 'flex',
                             alignItems: 'center',
-                            backgroundColor: 'blue',
-                            cursor: 'pointer',
-                        }}>
-                        <span>Send</span>
+                            justifyContent: 'center',
+                            backgroundColor: inputMessage.trim() ? '#1a1a1a' : '#ddd',
+                            cursor: inputMessage.trim() ? 'pointer' : 'not-allowed',
+                            fontSize: '14px',
+                            fontWeight: 500,
+                            transition: 'background-color 0.2s',
+                            minWidth: '60px'
+                        }}
+                        onMouseEnter={(e) => {
+                            if (inputMessage.trim()) e.target.style.backgroundColor = '#333';
+                        }}
+                        onMouseLeave={(e) => {
+                            if (inputMessage.trim()) e.target.style.backgroundColor = '#1a1a1a';
+                        }}
+                    >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: 4 }}>
+                            <path d="M16.6915026,12.4744748 L3.50612381,13.2599618 C3.19218622,13.2599618 3.03521743,13.4170592 3.03521743,13.5741566 L1.15159189,20.0151496 C0.8376543,20.8006365 0.99,21.89 1.77946707,22.52 C2.41,22.99 3.50612381,23.1 4.13399899,22.8429026 L21.714504,14.0454487 C22.6563168,13.5741566 23.1272231,12.6315722 22.9702544,11.6889879 L4.13399899,1.16257394 C3.34915502,0.9054766 2.40734225,1.01623725 1.77946707,1.4875294 C0.994623095,2.11631406 0.837654326,3.20563968 1.15159189,3.99113264 L3.03521743,10.4321256 C3.03521743,10.5892231 3.19218622,10.7463204 3.50612381,10.7463204 L16.6915026,11.5318074 C16.6915026,11.5318074 17.1624089,11.5318074 17.1624089,12.0030995 C17.1624089,12.4744748 16.6915026,12.4744748 16.6915026,12.4744748 Z" fill="currentColor" />
+                        </svg>
                     </button>
                 </div>
             </div>
